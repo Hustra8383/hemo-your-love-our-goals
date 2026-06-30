@@ -3,13 +3,14 @@ import { Heart, Home, Smile, Target, Moon, User2, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-const tabs = [
+type Tab = { to: string; label: string; icon: typeof Home; exact?: boolean };
+const tabs: Tab[] = [
   { to: "/app", label: "Home", icon: Home, exact: true },
   { to: "/app/mood", label: "Mood", icon: Smile },
   { to: "/app/focus", label: "Focus", icon: Sparkles },
   { to: "/app/goals", label: "Goals", icon: Target },
   { to: "/app/night", label: "Night", icon: Moon },
-] as const;
+];
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
