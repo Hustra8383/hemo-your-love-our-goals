@@ -43,7 +43,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             return (
               <Link
                 key={to}
-                to={to}
+                to={to as never}
                 className={cn(
                   "flex flex-1 flex-col items-center gap-0.5 rounded-full px-2 py-2 text-[10px] font-medium transition-all duration-300",
                   active
