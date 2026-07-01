@@ -14,11 +14,15 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppVoiceRouteImport } from './routes/app.voice'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppNightRouteImport } from './routes/app.night'
 import { Route as AppMoodRouteImport } from './routes/app.mood'
+import { Route as AppMemoriesRouteImport } from './routes/app.memories'
+import { Route as AppInviteRouteImport } from './routes/app.invite'
 import { Route as AppGoalsRouteImport } from './routes/app.goals'
 import { Route as AppFocusRouteImport } from './routes/app.focus'
+import { Route as AppDreamsRouteImport } from './routes/app.dreams'
 import { Route as AppCheckinsRouteImport } from './routes/app.checkins'
 
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -46,6 +50,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppVoiceRoute = AppVoiceRouteImport.update({
+  id: '/voice',
+  path: '/voice',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProfileRoute = AppProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -61,6 +70,16 @@ const AppMoodRoute = AppMoodRouteImport.update({
   path: '/mood',
   getParentRoute: () => AppRoute,
 } as any)
+const AppMemoriesRoute = AppMemoriesRouteImport.update({
+  id: '/memories',
+  path: '/memories',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInviteRoute = AppInviteRouteImport.update({
+  id: '/invite',
+  path: '/invite',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppGoalsRoute = AppGoalsRouteImport.update({
   id: '/goals',
   path: '/goals',
@@ -69,6 +88,11 @@ const AppGoalsRoute = AppGoalsRouteImport.update({
 const AppFocusRoute = AppFocusRouteImport.update({
   id: '/focus',
   path: '/focus',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDreamsRoute = AppDreamsRouteImport.update({
+  id: '/dreams',
+  path: '/dreams',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCheckinsRoute = AppCheckinsRouteImport.update({
@@ -83,11 +107,15 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/onboarding': typeof OnboardingRoute
   '/app/checkins': typeof AppCheckinsRoute
+  '/app/dreams': typeof AppDreamsRoute
   '/app/focus': typeof AppFocusRoute
   '/app/goals': typeof AppGoalsRoute
+  '/app/invite': typeof AppInviteRoute
+  '/app/memories': typeof AppMemoriesRoute
   '/app/mood': typeof AppMoodRoute
   '/app/night': typeof AppNightRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/voice': typeof AppVoiceRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
@@ -95,11 +123,15 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/onboarding': typeof OnboardingRoute
   '/app/checkins': typeof AppCheckinsRoute
+  '/app/dreams': typeof AppDreamsRoute
   '/app/focus': typeof AppFocusRoute
   '/app/goals': typeof AppGoalsRoute
+  '/app/invite': typeof AppInviteRoute
+  '/app/memories': typeof AppMemoriesRoute
   '/app/mood': typeof AppMoodRoute
   '/app/night': typeof AppNightRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/voice': typeof AppVoiceRoute
   '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
@@ -109,11 +141,15 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/onboarding': typeof OnboardingRoute
   '/app/checkins': typeof AppCheckinsRoute
+  '/app/dreams': typeof AppDreamsRoute
   '/app/focus': typeof AppFocusRoute
   '/app/goals': typeof AppGoalsRoute
+  '/app/invite': typeof AppInviteRoute
+  '/app/memories': typeof AppMemoriesRoute
   '/app/mood': typeof AppMoodRoute
   '/app/night': typeof AppNightRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/voice': typeof AppVoiceRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
@@ -124,11 +160,15 @@ export interface FileRouteTypes {
     | '/auth'
     | '/onboarding'
     | '/app/checkins'
+    | '/app/dreams'
     | '/app/focus'
     | '/app/goals'
+    | '/app/invite'
+    | '/app/memories'
     | '/app/mood'
     | '/app/night'
     | '/app/profile'
+    | '/app/voice'
     | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -136,11 +176,15 @@ export interface FileRouteTypes {
     | '/auth'
     | '/onboarding'
     | '/app/checkins'
+    | '/app/dreams'
     | '/app/focus'
     | '/app/goals'
+    | '/app/invite'
+    | '/app/memories'
     | '/app/mood'
     | '/app/night'
     | '/app/profile'
+    | '/app/voice'
     | '/app'
   id:
     | '__root__'
@@ -149,11 +193,15 @@ export interface FileRouteTypes {
     | '/auth'
     | '/onboarding'
     | '/app/checkins'
+    | '/app/dreams'
     | '/app/focus'
     | '/app/goals'
+    | '/app/invite'
+    | '/app/memories'
     | '/app/mood'
     | '/app/night'
     | '/app/profile'
+    | '/app/voice'
     | '/app/'
   fileRoutesById: FileRoutesById
 }
@@ -201,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/voice': {
+      id: '/app/voice'
+      path: '/voice'
+      fullPath: '/app/voice'
+      preLoaderRoute: typeof AppVoiceRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/profile': {
       id: '/app/profile'
       path: '/profile'
@@ -222,6 +277,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMoodRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/memories': {
+      id: '/app/memories'
+      path: '/memories'
+      fullPath: '/app/memories'
+      preLoaderRoute: typeof AppMemoriesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/invite': {
+      id: '/app/invite'
+      path: '/invite'
+      fullPath: '/app/invite'
+      preLoaderRoute: typeof AppInviteRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/goals': {
       id: '/app/goals'
       path: '/goals'
@@ -236,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppFocusRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/dreams': {
+      id: '/app/dreams'
+      path: '/dreams'
+      fullPath: '/app/dreams'
+      preLoaderRoute: typeof AppDreamsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/checkins': {
       id: '/app/checkins'
       path: '/checkins'
@@ -248,21 +324,29 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppCheckinsRoute: typeof AppCheckinsRoute
+  AppDreamsRoute: typeof AppDreamsRoute
   AppFocusRoute: typeof AppFocusRoute
   AppGoalsRoute: typeof AppGoalsRoute
+  AppInviteRoute: typeof AppInviteRoute
+  AppMemoriesRoute: typeof AppMemoriesRoute
   AppMoodRoute: typeof AppMoodRoute
   AppNightRoute: typeof AppNightRoute
   AppProfileRoute: typeof AppProfileRoute
+  AppVoiceRoute: typeof AppVoiceRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppCheckinsRoute: AppCheckinsRoute,
+  AppDreamsRoute: AppDreamsRoute,
   AppFocusRoute: AppFocusRoute,
   AppGoalsRoute: AppGoalsRoute,
+  AppInviteRoute: AppInviteRoute,
+  AppMemoriesRoute: AppMemoriesRoute,
   AppMoodRoute: AppMoodRoute,
   AppNightRoute: AppNightRoute,
   AppProfileRoute: AppProfileRoute,
+  AppVoiceRoute: AppVoiceRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
