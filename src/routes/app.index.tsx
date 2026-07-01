@@ -235,7 +235,7 @@ function Home() {
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl gradient-him text-white"><Moon className="h-4 w-4" /></span>
               <div className="min-w-0 flex-1">
                 <p className="text-xs uppercase tracking-wider text-muted-foreground">Last reflection</p>
-                <p className="mt-0.5 line-clamp-2 text-sm">{lastReflection.data.best_moment || lastReflection.data.grateful_for || lastReflection.data.bedtime_message || "You reflected. That's the win."}</p>
+                <p className="mt-0.5 line-clamp-2 text-sm">{lastReflection.data.best_moment || lastReflection.data.grateful_for || lastReflection.data.message || "You reflected. That's the win."}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{format(new Date(lastReflection.data.created_at), "MMM d")}</p>
               </div>
             </div>
